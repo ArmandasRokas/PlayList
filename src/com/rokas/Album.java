@@ -1,16 +1,15 @@
 package com.rokas;
 
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.ListIterator;
 
 public class Album {
     private String name;
-    private ArrayList<Song> songs;
+    private SongList songList;
+
 
     public Album (String name){
         this.name = name;
-        songs = new ArrayList<Song>();
+        songList = new SongList();
     }
 
     public static Album createAlbum(String name){
@@ -18,26 +17,47 @@ public class Album {
     }
 
     public ArrayList<Song> getSongs() {
-        return songs;
+
+        return songList.getSongs();
     }
 
     public boolean addSongToAlbum(String title, double duration){
 
-        if(findSong(title) == null){
-            Song song = new Song(title, duration);
-            songs.add(song);
-            return true;
-        }
-        return false;
-    }
-    public Song findSong(String title){
-        for(Song song: this.songs){
-            if(song.getTitle().equals(title)){
-                return song;
-            }
-        }
-        return null;
+        return songList.addSongToAlbum(title, duration);
 
+    }
+
+// inner class. Ikke sikker, hvad er formål
+    private class SongList {
+        private ArrayList<Song> songs;
+
+        public SongList(){
+            songs = new ArrayList<Song>();
+        }
+
+        public ArrayList<Song> getSongs(){
+            return songs;
+        }
+
+        public boolean addSongToAlbum(String title, double duration) {
+
+            if (findSong(title) == null) {
+                Song song = new Song(title, duration);
+                songs.add(song);
+                return true;
+            }
+            return false;
+        }
+
+        public Song findSong(String title) {
+            for (Song song : this.songs) {
+                if (song.getTitle().equals(title)) {
+                    return song;
+                }
+            }
+            return null;
+
+        }
     }
 
 

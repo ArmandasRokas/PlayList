@@ -1,3 +1,15 @@
+//Min notater om local inner classes og anonymous classes:
+// Button skal have en objekt OnClickListener og det giver  flere muligheder til Button class
+// og især hvis den skal have flere methods, som skal overrides onClick, onSwipe osv.
+//          Det kan også godt være at det samme kan gøres med inheritance? Alt det arbjde bare for
+//          at der skal overrides en method
+//
+// setOnClickListener(OnClickListener onClickListener) method har interface parameter, fordi det kan bruges med
+// flere forskellige OnClickListener implementations for hver Button, altså når det overrides
+//Nu kan der være local eller anonymous class for at implement OnClickListener, som kan sættes ind i setOnClickListener(OnClickListener onClickListener).
+//      Local er bedre for hvis den skal genbruges ( som fremkommer meget sjældent)
+//      Anonymous til gengæld bruger mindre plads og kan have sin egen implementation, dvs. overrides for hver eneste Button
+
 package com.rokas;
 
 import java.util.*;
