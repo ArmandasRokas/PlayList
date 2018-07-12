@@ -27,7 +27,7 @@ public class Album {
 
     }
 
-// inner class. Ikke sikker, hvad er formål
+// inner class. 
     private class SongList {
         private ArrayList<Song> songs;
 
